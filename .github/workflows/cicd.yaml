@@ -5,7 +5,10 @@ on:
     branches: [ master, release]
 jobs:
   test:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
+    env:
+      TEST_NOP_ADMIN_USERNAME: ${{secrets.TEST_STD_PASSWORD}}
+      TEST_NOP_ADMIN_PASSWORD: ${{secrets.TEST_STD_USERNAME}}
     steps:
       - name: Install Chromium Browser
         run: sudo apt-get install chromium-browser

@@ -23,12 +23,4 @@ jobs:
       - name: Run WebdriverIO Tests
         run: npm test
       - name: Generate Allure Report
-        uses: allure-actions/allure@v5
-        with:
-          version: 2.13.8
-      - name: Upload Report Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: allure-report
-          path: allure-report
-
+        run: npx allure generate allure-results --clean && npx allure open

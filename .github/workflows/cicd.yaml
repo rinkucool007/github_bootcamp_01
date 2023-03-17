@@ -16,6 +16,5 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Run WebdriverIO Tests
-        uses: webdriverio/action@0.0.12
-        with:
-          config-file: ./wdio.conf.js
+        run: npm test
+

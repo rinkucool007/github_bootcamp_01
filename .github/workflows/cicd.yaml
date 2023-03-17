@@ -1,0 +1,21 @@
+name: WebdriverIO
+
+on:
+  push:
+    branches: '**'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Install Dependencies
+        run: npm install
+      - name: Run WebdriverIO Tests
+        uses: webdriverio/action@0.0.12
+        with:
+          config-file: ./wdio.conf.js

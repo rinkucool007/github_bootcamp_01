@@ -23,6 +23,15 @@ export const config: Options.Testrunner = {
     {
       maxInstances: 5,
       browserName: "chrome",
+      "goog:chromeOptions": {
+        args: [
+          "--disable-web-security",
+          "--headless",
+          "--disable-dev-shm-usage",
+          "--no-sandbox",
+          "--window-size=1920,1080",
+        ],
+      },
       acceptInsecureCerts: true,
     },
   ],

@@ -2,11 +2,13 @@ name: WebdriverIO
 
 on:
   push:
-    branches: '**'
+    branches: [ master, release]
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: Install Chromium
+        run: sudo apt-get install chromium-browser
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install Node.js

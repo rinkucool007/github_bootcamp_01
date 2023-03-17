@@ -7,7 +7,7 @@ jobs:
   test:
     runs-on: self-hosted
     steps:
-      - name: Install Chromium
+      - name: Install Chromium Browser
         run: sudo apt-get install chromium-browser
       - name: Checkout
         uses: actions/checkout@v2

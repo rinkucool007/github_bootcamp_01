@@ -5,7 +5,7 @@ on:
     branches: [ master, release]
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Install Chromium
         run: sudo apt-get install chromium-browser

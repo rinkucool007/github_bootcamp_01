@@ -31,4 +31,4 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Upload Allure report to S3 bucket
-        run: aws s3 sync reports/allure-results-html s3://384687-allure-report/
+        run: aws s3 sync allure-results-html s3://384687-allure-report/

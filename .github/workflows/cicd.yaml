@@ -23,7 +23,7 @@ jobs:
       - name: Run WebdriverIO Tests
         run: npm test
       - name: Generate Allure Report
-        run: npx allure generate allure-results --clean
+        run: npx allure generate -c allure-results -o allure-results-html
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -31,4 +31,4 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Upload Allure report to S3 bucket
-        run: aws s3 cp allure-report s3://384687-github-action --recursive --region us-west-1
+        run: aws s3 sync reports/allure-results-html s3://384687-allure-report/

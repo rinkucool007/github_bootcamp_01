@@ -4,37 +4,38 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const config: Options.Testrunner = {
-  //
-  // ====================
-  // Runner Configuration
-  // ====================
-  // WebdriverIO supports running e2e tests as well as unit and component tests.
-  runner: "local",
-  autoCompileOpts: {
-    tsNodeOpts: {
-      project: "./tsconfig.json",
-    },
-  },
-
-  specs: ["./test/features/**/*.feature"],
+  runner: 'local',
+  hostname: '0.0.0.0',
+  port: 4444,
+  path: '/wd/hub',
+  //path: '/ui/',
+  specs: [ './test/features/**/*.feature' ],
   exclude: [],
   maxInstances: 10,
   capabilities: [
     {
-      maxInstances: 5,
-      browserName: "chrome",
-      "goog:chromeOptions": {
-        args: [
-          "--disable-web-security",
-          "--headless",
-          "--disable-dev-shm-usage",
-          "--no-sandbox",
-          "--window-size=1920,1080",
-        ],
-      },
-      acceptInsecureCerts: true,
-    },
-  ],
+    maxInstances: 5,
+    browserName: 'chrome',
+    port: 4444,
+    acceptInsecureCerts: true,
+    timeouts: { implicit: 10000, pageLoad: 20000, script: 30000 },
+},
+{
+    maxInstances: 1,
+    browserName: 'firefox',
+    port: 4444,
+    acceptInsecureCerts: true,
+    timeouts: { implicit: 10000, pageLoad: 20000, script: 30000 },
+},
+{
+    maxInstances: 1,
+    browserName: 'MicrosoftEdge',
+    port: 4444,
+    acceptInsecureCerts: true,
+    timeouts: { implicit: 10000, pageLoad: 20000, script: 30000 },
+}
+
+],
 
   logLevel: "info",
 
@@ -43,7 +44,7 @@ export const config: Options.Testrunner = {
   waitforTimeout: 10000,
   connectionRetryTimeout: 120000,
   connectionRetryCount: 3,
-  services: ["chromedriver"],
+  //services: ["chromedriver"],
   framework: "cucumber",
   reporters: [
     "spec",
